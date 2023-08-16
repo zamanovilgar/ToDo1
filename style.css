@@ -1,0 +1,7 @@
+.infoMessage {
+  display: none;
+  color: red;
+}
+.show {
+  display: block;
+}
