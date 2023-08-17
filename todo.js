@@ -26,15 +26,26 @@ function createTodo() {
   }
   todoDate.push(value);
   todoInput.value = "";
+  renderTodoList(todoDate);
   //   console.log(todoDate);
-  const newContent = todoDate
-    .map((todo, index) => `<li>${index + 1}.${todo}`)
-    .join("");
-  console.log(newContent);
-  todoList.innerHTML = newContent;
 }
 todoInput.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     createTodo();
   }
 });
+function removeTodo(todoIndex) {
+  console.log(todoIndex);
+  const newTodoData = todoDate.filter((item, index) => index !== todoIndex);
+ todoDate=newTodoData;
+  renderTodoList(newTodoData);
+}
+function renderTodoList(arr) {
+  const newContent = arr
+    .map(
+      (todo, index) => `<li onclick="removeTodo(${index})">${index + 1}.${todo}`
+    )
+    .join("");
+  console.log(newContent);
+  todoList.innerHTML = newContent;
+}
